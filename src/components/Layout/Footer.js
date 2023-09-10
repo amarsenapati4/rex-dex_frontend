@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import logo from './REXdex copy.png'
 
@@ -6,7 +7,7 @@ function Footer() {
     <footer className="px-4 divide-y bg-green-500 dark:bg-gray-800 dark:text-gray-100">
 	<div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0 ">
 		<div className="lg:w-1/3">
-			<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
+			<a rel="noopener noreferrer" href='#' className="flex justify-center space-x-3 lg:justify-start">
 				<span className="self-center text-2xl font-semibold">
                 <img src={logo} alt={"logo"} className='pl-8 py-4 h-[5rem]'/>
                 </span>
