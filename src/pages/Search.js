@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const Search = () => {
     const navigate = useNavigate();
     const [cart, setCart] = useCart();
-  const [values, setValues] = useSearch();
+  const [values] = useSearch();
   return (
     <Layout title={"Search results"}>
       <div className="container mt-[6rem] ">
@@ -23,7 +23,7 @@ const Search = () => {
             {values?.results.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

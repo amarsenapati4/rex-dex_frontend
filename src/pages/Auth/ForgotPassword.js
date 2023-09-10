@@ -19,7 +19,7 @@ const ForgotPassword = () => {
           {email,answer,newPassword}
         );
         if (res && res.data.success) {
-          navigate("/login");
+          navigate("https://ecommerce-backend-us2n.onrender.com/login");
           setTimeout(() => {
             toast.success(res.data.message);
             

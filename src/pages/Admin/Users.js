@@ -10,7 +10,9 @@ const Users = () => {
         <div className="col-md-3 flex">
             <AdminMenue/>
         </div>
-        <div className="col-md-9 mt-2"><h1>Users</h1></div>
+        <div className="col-md-9 mt-2">
+          
+        </div>
     </div>
     </div>
 </Layout>

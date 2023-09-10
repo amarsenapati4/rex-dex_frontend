@@ -1,14 +1,14 @@
+/* eslint-disable array-callback-return */
 import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useCart } from "../Context/cart";
 import { useAuth } from "../Context/auth";
 import toast from "react-hot-toast";
 import axios from "axios";
-import rexdex from "./../img/REXdex copy.png"
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
 const CartPage = () => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const [cart, setCart] = useCart();
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
@@ -38,7 +38,7 @@ const CartPage = () => {
       let index = myCart.findIndex((item) => item._id === pid);
       myCart.splice(index, 1);
       setCart(myCart);
-      localStorage.setItem("cart", JSON.stringify(myCart));
+      localStorage.setItem("https://ecommerce-backend-us2n.onrender.com/cart", JSON.stringify(myCart));
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +46,7 @@ const CartPage = () => {
 //get payment gateway token
 const getToken = async () => {
   try {
-    const { data } = await axios.get("/api/v1/product/braintree/token");
+    const { data } = await axios.get("https://ecommerce-backend-us2n.onrender.com/api/v1/product/braintree/token");
     setClientToken(data?.clientToken);
   } catch (error) {
     console.log(error);
@@ -61,14 +61,15 @@ const handlePayment = async () => {
   try {
     setLoading(true);
     const { nonce } = await instance.requestPaymentMethod();
-    const { data } = await axios.post("/api/v1/product/braintree/payment", {
+    // eslint-disable-next-line no-unused-vars
+    const { data } = await axios.post("https://ecommerce-backend-us2n.onrender.com/api/v1/product/braintree/payment", {
       nonce,
       cart,
     });
     setLoading(false);
-    localStorage.removeItem("cart");
+    localStorage.removeItem("https://ecommerce-backend-us2n.onrender.com/cart");
     setCart([]);
-    navigate("/dashboard/user/orders");
+    navigate("https://ecommerce-backend-us2n.onrender.com/dashboard/user/orders");
     toast.success("Payment Completed Successfully ");
   } catch (error) {
     console.log(error);
@@ -98,7 +99,7 @@ const handlePayment = async () => {
               <div className="row mb-2 p-3 card flex-row">
                 <div className="col-md-4">
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                     width="100px"
@@ -132,7 +133,7 @@ const handlePayment = async () => {
                   <h5>{auth?.user?.address}</h5>
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => navigate("/dashboard/user/profile")}
+                    onClick={() => navigate("https://ecommerce-backend-us2n.onrender.com/dashboard/user/profile")}
                   >
                     Update Address
                   </button>
@@ -143,7 +144,7 @@ const handlePayment = async () => {
                 {auth?.token ? (
                   <button
                     className="btn btn-outline-warning"
-                    onClick={() => navigate("/dashboard/user/profile")}
+                    onClick={() => navigate("https://ecommerce-backend-us2n.onrender.com/dashboard/user/profile")}
                   >
                     Update Address
                   </button>
@@ -151,8 +152,8 @@ const handlePayment = async () => {
                   <button
                     className="btn btn-outline-info"
                     onClick={() =>
-                      navigate("/login", {
-                        state: "/cart",
+                      navigate("https://ecommerce-backend-us2n.onrender.com/login", {
+                        state: "https://ecommerce-backend-us2n.onrender.com/cart",
                       })
                     }
                   >

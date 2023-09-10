@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import UserMenu from "../../components/Layout/UserMenue";
 import Layout from "./../../components/Layout/Layout";
 import axios from "axios";
 import { useAuth } from "../../Context/auth";
@@ -8,7 +7,7 @@ import UserMenue from "../../components/Layout/UserMenue";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const getOrders = async () => {
     try {
       const { data } = await axios.get("/api/v1/auth/orders");

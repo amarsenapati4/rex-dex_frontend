@@ -26,12 +26,7 @@ const Header = () => {
       toast.success("Logout Successful");
     }, "1000");
   }
-  let Links = [
-    { name: "HOME", link: "/" },
-    { name: "Category", link: "/category" },
-    { name: "Register", link: "/register" },
-    { name: "Login", link: "/login" },
-  ];
+
   let [open, setOpen] = useState(false);
 
  

@@ -13,25 +13,26 @@ const ProductDetails = () => {
 
   //initalp details
   useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://ecommerce-backend-us2n.onrender.com/api/v1/product/get-product/${params.slug}`
+        );
+        setProduct(data?.product);
+        getSimilarProduct(data?.product._id, data?.product.category._id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     if (params?.slug) getProduct();
   }, [params?.slug]);
   //getProduct
-  const getProduct = async () => {
-    try {
-      const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.slug}`
-      );
-      setProduct(data?.product);
-      getSimilarProduct(data?.product._id, data?.product.category._id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+ 
   //get similar product
   const getSimilarProduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/related-product/${pid}/${cid}`
+        `https://ecommerce-backend-us2n.onrender.com/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProducts(data?.products);
     } catch (error) {
@@ -43,7 +44,7 @@ const ProductDetails = () => {
       <div className="row container mt-[6rem]">
         <div className="col-md-6">
           <img
-            src={`/api/v1/product/product-photo/${product._id}`}
+            src={`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-photo/${product._id}`}
             className="card-img-top w-full max-w-[480px] aspect-square m-auto"
             alt={product.name}
            
@@ -85,7 +86,7 @@ const ProductDetails = () => {
             <div className="card m-2" style={{ width: "18rem" }}>
               {/* <div className="w-full max-w-[180px] aspect-square m-auto"> */}
               <img
-                src={`/api/v1/product/product-photo/${p?._id}`}
+                src={`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-photo/${p?._id}`}
                 className="card-img-top"
                 alt={p.name}
               />

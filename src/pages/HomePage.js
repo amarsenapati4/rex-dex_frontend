@@ -6,7 +6,6 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../Context/cart";
 import toast from "react-hot-toast";
-import { Carousel } from "@material-tailwind/react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 
@@ -61,7 +60,7 @@ const HomePage = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get("https://ecommerce-backend-us2n.onrender.com/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -75,37 +74,26 @@ const HomePage = () => {
     getTotal();
   }, []);
   //get products
-  const getAllProducts = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
-      setLoading(false);
-      setProducts(data.products);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
+ 
 
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get("https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-count");
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
     }
   };
 
+ 
   useEffect(() => {
-    if (page === 1) return;
-    loadMore();
-  }, [page]);
-  //load more
+
+     
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts([...products, ...data?.products]);
     } catch (error) {
@@ -113,6 +101,11 @@ const HomePage = () => {
       setLoading(false);
     }
   };
+    if (page === 1) return;
+    loadMore();
+  }, [page,products]);
+  //load more
+
 
   // filter by cat
   const handleFilter = (value, id) => {
@@ -125,25 +118,39 @@ const HomePage = () => {
     setChecked(all);
   };
   useEffect(() => {
+
+    const getAllProducts = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-list/${page}`);
+        setLoading(false);
+        setProducts(data.products);
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      }
+    };
     if (!checked.length || !radio.length) getAllProducts();
-  }, [checked.length, radio.length]);
+  }, [checked.length, radio.length,page]);
 
   useEffect(() => {
+
+    const filterProduct = async () => {
+      try {
+        const { data } = await axios.post("https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-filters", {
+          checked,
+          radio,
+        });
+        setProducts(data?.products);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     if (checked.length || radio.length) filterProduct();
   }, [checked, radio]);
 
   //get filterd product
-  const filterProduct = async () => {
-    try {
-      const { data } = await axios.post("/api/v1/product/product-filters", {
-        checked,
-        radio,
-      });
-      setProducts(data?.products);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+ 
 
   return (
     <Layout title={"ALl Products - Best offers "}>
@@ -212,7 +219,7 @@ const HomePage = () => {
               {products?.map((p) => (
                 <div className="card m-3" style={{ width: "18rem" }}>
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`https://ecommerce-backend-us2n.onrender.com/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

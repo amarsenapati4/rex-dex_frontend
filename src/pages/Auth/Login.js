@@ -13,6 +13,7 @@ const Login = () => {
   const [auth,setAuth]=useAuth()
 
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
   const location = useLocation();
   //form sumbit
   const handelSubmit = async (e) => {
