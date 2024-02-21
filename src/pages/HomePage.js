@@ -6,8 +6,8 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useCart } from "../Context/cart";
 import toast from "react-hot-toast";
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { RxDotFilled } from "react-icons/rx";
+// import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+// import { RxDotFilled } from "react-icons/rx";
 
 const HomePage = () => {
   // const slides = [
