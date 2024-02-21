@@ -10,43 +10,43 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 
 
-const HomePage = () => {
-  const slides = [
-    {
-      url: 'https://shop.teamsg.in/wp-content/uploads/2023/07/200-DPI_Player_Banner-2.png',
-    },
-    {
-      url: 'https://static.vecteezy.com/system/resources/previews/001/330/144/original/realistic-soccer-or-football-in-net-with-copy-space-free-vector.jpg',
-    },
-    {
-      url: 'https://cdn.fitimg.in/blog_banner_B9CCE7A75859AEF.png',
-    },
+// const HomePage = () => {
+//   const slides = [
+//     {
+//       url: 'https://shop.teamsg.in/wp-content/uploads/2023/07/200-DPI_Player_Banner-2.png',
+//     },
+//     {
+//       url: 'https://static.vecteezy.com/system/resources/previews/001/330/144/original/realistic-soccer-or-football-in-net-with-copy-space-free-vector.jpg',
+//     },
+//     {
+//       url: 'https://cdn.fitimg.in/blog_banner_B9CCE7A75859AEF.png',
+//     },
 
-    {
-      url: 'https://sportshub.cbsistatic.com/i/r/2023/07/12/f77309e6-c639-46a2-8142-727c9cadd73d/thumbnail/1200x675/6cedf57667583332df1b598788d44b23/treadmill-hero.png',
-    },
-    {
-      url: 'https://www.sstoncricket.com/wp-content/uploads/2023/07/kit-banner2.jpg',
-    },
-  ];
+//     {
+//       url: 'https://sportshub.cbsistatic.com/i/r/2023/07/12/f77309e6-c639-46a2-8142-727c9cadd73d/thumbnail/1200x675/6cedf57667583332df1b598788d44b23/treadmill-hero.png',
+//     },
+//     {
+//       url: 'https://www.sstoncricket.com/wp-content/uploads/2023/07/kit-banner2.jpg',
+//     },
+//   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
+  // const prevSlide = () => {
+  //   const isFirstSlide = currentIndex === 0;
+  //   const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
+  // const nextSlide = () => {
+  //   const isLastSlide = currentIndex === slides.length - 1;
+  //   const newIndex = isLastSlide ? 0 : currentIndex + 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
+  // const goToSlide = (slideIndex) => {
+  //   setCurrentIndex(slideIndex);
+  // };
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
@@ -156,30 +156,30 @@ const HomePage = () => {
     <Layout title={"ALl Products - Best offers "}>
       <div className="container-fluid row  mt-[3rem] justify-between">
       <div className='max-w-[1000px]  h-[350px] md:max-w-[1380px] md:h-[600px] w-full m-auto py-16 px-4 relative group'>
-      <div
-        style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
-      ></div>
-      {/* Left Arrow */}
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-        <BsChevronCompactLeft onClick={prevSlide} size={30} />
-      </div>
-      {/* Right Arrow */}
-      <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-        <BsChevronCompactRight onClick={nextSlide} size={30} />
-      </div>
-      <div className='flex top-4 justify-center py-2'>
-        {slides.map((slide, slideIndex) => (
-          <div
-            key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
-            className='text-2xl cursor-pointer'
-          >
-            <RxDotFilled />
-          </div>
-        ))}
-      </div>
-    </div>
+    //   <div
+    //     style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+    //     className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
+    //   ></div>
+    //   {/* Left Arrow */}
+    //   <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+    //     <BsChevronCompactLeft onClick={prevSlide} size={30} />
+    //   </div>
+    //   {/* Right Arrow */}
+    //   <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+    //     <BsChevronCompactRight onClick={nextSlide} size={30} />
+    //   </div>
+    //   <div className='flex top-4 justify-center py-2'>
+    //     {slides.map((slide, slideIndex) => (
+    //       <div
+    //         key={slideIndex}
+    //         onClick={() => goToSlide(slideIndex)}
+    //         className='text-2xl cursor-pointer'
+    //       >
+    //         <RxDotFilled />
+    //       </div>
+    //     ))}
+    //   </div>
+    // </div>
         <div className='flex md:flex-row flex-col gap-4'>
           <div className="col-md-2">
             <h4 className="text-center font-bold text-emerald-700 mt-5">Filter By Category</h4>
